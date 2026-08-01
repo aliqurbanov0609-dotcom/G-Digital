@@ -3,16 +3,20 @@
 //   - tanstackStart, viteReact, tailwindcss, tsConfigPaths, nitro (build-only using cloudflare as a default target),
 //     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
 //     error logger plugins, and sandbox detection (port/host/strictPort).
+
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { VitePWA } from "vite-plugin-pwa";
+
 export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
+
   vite: {
     plugins: [
       VitePWA({
         registerType: "autoUpdate",
+
         manifest: {
           name: "G-Digital",
           short_name: "GDigital",
@@ -20,7 +24,9 @@ export default defineConfig({
           theme_color: "#0B0F1A",
           background_color: "#0B0F1A",
           display: "standalone",
+          orientation: "portrait",
           start_url: "/",
+
           icons: [
             {
               src: "/icon-192.png",
