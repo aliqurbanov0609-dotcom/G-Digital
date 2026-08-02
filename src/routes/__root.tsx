@@ -75,19 +75,21 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
+    title: "G-Digital — Smart Financial Management",
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { name: "description", content: "G-Digital — умное управление личными финансами" },
+      { name: "theme-color", content: "#000000" },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "G-Digital — Smart Financial Management" },
+      { property: "og:description", content: "G-Digital — умное управление личными финансами" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "manifest", href: "/manifest.json" },
       {
         rel: "icon",
         href: "https://i.postimg.cc/J0JB20n7/Dizajn-bez-nazvania.png",
