@@ -20,6 +20,6 @@ const errorMiddleware = createMiddleware().server(async ({ next }) => {
 export const startInstance = createStart(() => ({
   requestMiddleware: [errorMiddleware],
 }));
-import { registerSW } from 'virtual:pwa-register';
 
-registerSW({ immediate: true });
+// NOTE: virtual:pwa-register removed from this file to avoid double registration.
+// The repository now registers a manual service worker at /sw.js in the root start.ts.
