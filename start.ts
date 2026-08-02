@@ -1,4 +1,3 @@
-import { registerSW } from 'virtual:pwa-register';
 import { createStart, createMiddleware } from "@tanstack/react-start";
 
 import { renderErrorPage } from "./lib/error-page";
@@ -21,4 +20,17 @@ export const startInstance = createStart(() => ({
   requestMiddleware: [errorMiddleware],
 }));
 
-registerSW({ immediate: true });
+// Register service worker for PWA (manual registration of /sw.js)
+if (typeof window !== "undefined" && "serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then((reg) => {
+        // registration successful
+        // console.log('Service worker registered:', reg);
+      })
+      .catch((err) => {
+        console.warn("Service worker registration failed:", err);
+      });
+  });
+}
