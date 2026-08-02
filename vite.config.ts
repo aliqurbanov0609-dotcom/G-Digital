@@ -1,18 +1,19 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
-// or the app will break with duplicate plugins:
-//   - tanstackStart, viteReact, tailwindcss, tsConfigPaths, nitro (build-only using cloudflare as a default target),
-//     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
-//     error logger plugins, and sandbox detection (port/host/strictPort).
-
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
+  // Переключаем TanStack Start в SPA режим (отключаем серверную сборку/SSR)
   tanstackStart: {
-    server: { entry: "server" },
+    preset: "spa",
+    // Дополнительно явно отключаем server entry (если плагин ожидает boolean)
+    server: false,
   },
 
   vite: {
+    // Явно указываем папку вывода сборки
+    build: {
+      outDir: "dist",
+    },
     plugins: [
       VitePWA({
         registerType: "autoUpdate",
